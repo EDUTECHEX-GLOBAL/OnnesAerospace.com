@@ -1,0 +1,1357 @@
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background:
+    radial-gradient(circle at 72% 42%, rgba(0, 140, 255, 0.1), transparent 30rem),
+    #000;
+  min-height: 790px;
+  overflow: hidden;
+  padding: 180px 64px 105px;
+  position: relative;
+}
+
+.hero::after {
+  background:
+    linear-gradient(180deg, #000 0, rgba(0, 0, 0, 0.82) 70px, rgba(0, 0, 0, 0) 210px),
+    linear-gradient(0deg, #000 0, rgba(0, 0, 0, 0) 150px);
+  bottom: 0;
+  content: "";
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.hero-copy {
+  max-width: 680px;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  color: #f3f3f3;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-bottom: 28px;
+}
+.hero-title {
+  max-width: 980px;
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.hero-blue {
+  color: var(--blue);
+}
+
+.hero-white {
+  color: #fff;
+}
+
+.hero-copy > p:not(.eyebrow) {
+  max-width: 520px;
+}
+
+h2 {
+  font-size: clamp(34px, 2.65vw, 52px);
+}
+
+.hero-copy > p:not(.eyebrow),
+.vision-copy p,
+.platforms-head > p,
+.milestone p,
+.why-copy p,
+.reason p,
+.platform-card p,
+.footer p {
+  color: var(--muted);
+  font-size: clamp(16px, 1.05vw, 21px);
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 44px;
+}
+
+/* ============================================================
+   SCROLL CUE
+   ============================================================ */
+.scroll-cue {
+  align-items: center;
+  bottom: 70px;
+  color: #c6c8ce;
+  display: flex;
+  gap: 24px;
+  font-size: 16px;
+  left: 64px;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.hero .scroll-cue {
+  bottom: auto;
+  left: auto;
+  margin-top: 26px;
+  position: relative;
+}
+
+.scroll-cue span {
+  border: 2px solid #fff;
+  border-radius: 999px;
+  display: inline-block;
+  height: 54px;
+  position: relative;
+  width: 30px;
+}
+
+.scroll-cue span::before,
+.scroll-cue span::after {
+  background: var(--blue);
+  border-radius: 50%;
+  content: "";
+  height: 5px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 5px;
+}
+
+.scroll-cue span::before {
+  top: 11px;
+}
+
+.scroll-cue span::after {
+  bottom: 11px;
+}
+
+/* ============================================================
+   HERO VIDEO
+   ============================================================ */
+.hero-video {
+  height: 100%;
+  left: 0;
+  object-fit: contain;          /* change from contain → cover */
+  object-position: right center;
+  position: absolute;
+  top: 0;
+  width: 120%;                /* change from 130% → 100% */
+  z-index: 0;
+}
+
+.hero-video-mask {
+  background:
+    linear-gradient(
+      90deg,
+      #000 0%,
+      #000 38%,                      /* solid black covers more of the left */
+      rgba(0, 0, 0, 0.85) 46%,       /* soft start of fade */
+      rgba(0, 0, 0, 0.60) 54%,
+      rgba(0, 0, 0, 0.25) 66%,
+      rgba(0, 0, 0, 0.08) 78%,
+      transparent 90%
+    ),
+    linear-gradient(180deg, #000 0%, transparent 16%, transparent 78%, #000 100%),
+    radial-gradient(circle at 78% 50%, transparent 0 34%, rgba(0, 0, 0, 0.22) 66%, #000 100%);
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+/* ============================================================
+   VISION
+   ============================================================ */
+.vision {
+  align-items: center;
+  background:
+    radial-gradient(circle at 22% 9%, rgba(84, 138, 190, 0.18), transparent 18rem),
+    radial-gradient(circle at 42% 18%, rgba(255, 255, 255, 0.08), transparent 20rem),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.96) 0 30%, rgba(1, 9, 16, 0.74) 55%, rgba(0, 0, 0, 0.94) 100%),
+    linear-gradient(180deg, #02060c 0%, #000 88%),
+    #000;
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 420px 1fr;
+  padding: 30px 58px 5px;
+}
+
+.vision-copy {
+  max-width: 610px;
+  position: relative;
+  z-index: 2;
+}
+
+.vision-copy p {
+  margin-bottom: 34px;
+}
+
+.text-link {
+  color: var(--blue);
+  font-size: 23px;
+}
+
+.world-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    justify-content: center;
+    gap: 16px;
+    z-index: 2;
+}
+
+.world-card {
+  align-items: center;
+  background: #05070a;              /* solid dark card background — border now always sits on this, never on the photo */
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 550px;
+  min-height: 0;
+
+  padding: 0 34px 52px;
+
+  position: relative;
+  text-align: center;
+
+  overflow: hidden;
+}
+
+/* ── INSET IMAGE LAYER ───────────────────────────────────────
+   Same technique as .platform-image: the photo lives on its own
+   layer set slightly inside the card (not touching the border),
+   so the border always has a clean dark edge to sit on, exactly
+   like the Platform cards below. This is what removes the
+   blending issue on Orbit/Moon permanently.
+   ──────────────────────────────────────────────────────────── */
+.world-image {
+  position: absolute;
+  inset: 0;              /* was: 3px — that gap is what created the visible strip */
+  border-radius: 6px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+
+.world-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0 48%, rgba(0, 0, 0, 0.9) 78%);
+}
+
+.world-image-1 {
+  background-image: url("../assets/Visionearth.webp");
+}
+
+.world-image-2 {
+  background-image: url("../assets/Visionorbit1.webp");
+}
+
+.world-image-3 {
+  background-image: url("../assets/Visionmoon.webp");
+}
+
+.world-image-4 {
+  background-image: url("../assets/Visiondeepspace.webp");
+  background-size: 150% auto;
+  background-position: 100% center;
+}
+
+.world-content {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── PIN ──────────────────────────────────────────────────────
+   Anchored from the BOTTOM of the card (not the top) so it sits
+   just above the title regardless of card height. This keeps it
+   correctly positioned across every breakpoint (large desktop,
+   1100px tablet, and the flow-based mobile layout below) without
+   needing a separate override per breakpoint.
+   ──────────────────────────────────────────────────────────── */
+.pin {
+  background: var(--blue);
+  border: 7px solid #071423;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #fff, 0 0 26px rgba(0, 140, 255, 0.95);
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  bottom: 165px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0;
+  z-index: 2;
+}
+
+.world-card h3,
+.platform-card h3,
+.milestone h3 {
+  color: #fff;
+  font-size: clamp(20px, 1.45vw, 30px);
+  line-height: 1.14;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+/* ── TITLE / DESCRIPTION HEIGHT RESERVATION ─────────────────────
+   Fixes cross-card misalignment (seen on Mac / Retina screens where
+   text wraps at different widths). By reserving a fixed height for
+   the title and description based on font-relative (em) units, every
+   card's text block occupies identical vertical space regardless of
+   whether the title/body wraps to 1 or 2 lines. This keeps rows
+   aligned at every screen size since em scales with the responsive
+   clamp() font sizes already in place.
+   ──────────────────────────────────────────────────────────── */
+.world-card h3 {
+    height: 58px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    width: 100%;
+    margin-bottom: 18px;
+
+    flex-shrink: 0;
+}
+
+.platform-card h3{
+    min-height: 2.3em;
+    flex-shrink: 0;
+
+    white-space: nowrap;
+    font-size: clamp(18px, 1.15vw, 26px);
+}
+
+/* ============================================================
+   WHY — reason h3: fixed 2-line height reservation (same
+   technique as .world-card h3) so every heading bottom-aligns
+   at the same position whether it takes 1 or 2 lines — this is
+   what keeps the paragraphs below starting at the same y-position
+   across all 4 cards, on every screen size.
+   ============================================================ */
+.reason h3 {
+  color: #fff;
+  font-size: clamp(13px, 0.95vw, 18px); /* raised back up now that the grid has more width to work with */
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.14;
+  text-transform: uppercase;
+  white-space: normal; /* wraps gracefully instead of overflowing if a title still can't fit on one line */
+
+  height: 2.4em;        /* reserves space for up to 2 lines */
+  display: flex;
+  align-items: flex-end; /* bottom-anchors the text so short 1-line titles align with 2-line ones */
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.world-card p {
+  color: #f0f0f0;
+  font-size: 16px;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  text-align: center;
+
+  margin: 0;
+}
+
+.vision-cue {
+  display: none;
+}
+
+/* ============================================================
+   PLATFORMS
+   ============================================================ */
+.platforms {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.44), #000 82%),
+    #000;
+  padding: 100px 60px 40px;
+}
+
+.platforms-head {
+  align-items: start;
+  display: block;
+  max-width: 760px;
+  margin-bottom: 52px;
+  position: relative;
+}
+
+.platforms-head h2 {
+  max-width: 760px;
+}
+
+.platforms-head > p {
+  margin: 28px 0 0;
+  max-width: none;
+  white-space: nowrap;
+}
+
+.platforms-head > div {
+  max-width: 760px;
+}
+
+.platform-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.platform-card {
+  background: linear-gradient(180deg, rgba(8, 12, 18, 0.72), rgba(2, 3, 5, 0.86));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  min-height: 475px;
+  overflow: hidden;
+  padding: 0 38px 36px;
+  /* Flex column so the Explore link can be pinned to the bottom
+     with margin-top: auto, regardless of how much the title/body
+     above it wraps. This is what keeps "Explore" aligned across
+     all four cards in a row on every screen size. */
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-image {
+  background: #05070a center / cover no-repeat;
+  height: 250px;
+  margin: 0 -38px 28px;
+  width: calc(100% + 76px);
+  flex-shrink: 0;
+}
+
+.platform-1 .platform-image { background-image: url("../assets/OrbitalINfra.webp"); }
+.platform-2 .platform-image { background-image: url("../assets/LunarInfra3.webp"); }
+.platform-3 .platform-image { background-image: url("../assets/DeepSpace5.webp"); }
+.platform-4 .platform-image { background-image: url("../assets/SpaceEcosystems.webp"); }
+
+.icon-ring,
+.reason-icon {
+  align-items: center;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  color: var(--blue);
+  display: flex;
+  font-size: 26px;
+  height: 62px;
+  justify-content: center;
+  margin-bottom: 28px;
+  width: 62px;
+  flex-shrink: 0;
+}
+
+.platform-card p {
+  margin-bottom: 28px;
+}
+
+.platform-card .text-link {
+  margin-top: auto;
+}
+
+/* ============================================================
+   JOURNEY
+   ============================================================ */
+/* ============================================================
+   JOURNEY
+   ============================================================ */
+.journey {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.46) 28%,
+      rgba(0, 0, 0, 0.42) 70%,
+      rgba(0, 0, 0, 0.68) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.28) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url("../assets/OuterSpace.webp") center bottom / cover no-repeat;
+  min-height: 520px;
+  padding: 60px 80px 100px;
+  position: relative;
+}
+
+.journey-head {
+  align-items: end;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: 90px;
+  position: relative;
+  z-index: 1;
+}
+
+.milestone {
+  padding-right: 50px;
+  position: relative;
+}
+
+.milestone::before {
+  background: rgba(255, 255, 255, 0.55);
+  content: "";
+  height: 2px;
+  left: 100px;
+  position: absolute;
+  right: 0;
+  top: 16px;
+}
+
+.milestone:last-child::before {
+  display: none;
+}
+
+.year {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-size: 28px;
+  gap: 18px;
+  margin-bottom: 38px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+}
+
+.year span {
+  border: 5px solid #071423;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #6bbdff;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 17px;
+  width: 17px;
+}
+
+.milestone h3 {
+  color: #fff;
+  font-size: clamp(20px, 1.3vw, 28px);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+  text-transform: none;
+}
+
+.milestone p {
+  color: #eef3ff;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+}
+
+/* ============================================================
+   WHY
+   ============================================================ */
+.why {
+  align-items: start;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 0.6fr 1.8fr;
+  min-height: 500px;
+  padding: 65px 60px 0px;
+}
+
+.why-copy h2 {
+  max-width: 560px;
+}
+
+.why-copy,
+.final-cta > div:first-child {
+  position: relative;
+}
+
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* FIXED: minmax(0, 1fr) stops long nowrap titles from stretching their own column wider than the rest */
+}
+
+.reason {
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  min-height: 310px;
+  padding: 0 20px;                 /* reduced from 34px to give headings more room to fit on one line */
+  text-align: center;              /* centers icon box, heading, and paragraph */
+}
+
+.reason-icon {
+  border: 0;
+  font-size: 0;
+  height: 70px;
+  width: 70px;
+  margin-left: auto;               /* NEW: centers the fixed-size icon box horizontally */
+  margin-right: auto;
+}
+.reason-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--blue);
+}
+
+.reason p {
+  min-height: 6.2em;
+}
+
+/* ============================================================
+   PARTNERS — scrolling thanks-text + infinite logo strip
+   ============================================================ */
+.partners {
+  background: #000;
+  overflow: hidden;
+  padding-top: 15px;
+  padding-bottom: 100px;
+}
+
+/* Outlined scrolling text ("Onnes thanks its partners...")
+   font-family matches the old site's MovingText component
+   (helvetica), and case is left as-authored (no uppercase
+   transform) to match the old site's rendering exactly. */
+.partners-marquee {
+  overflow: hidden;
+  width: 100%;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--blue);
+  font-family: helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 96px);
+  line-height: 1.2em;
+  margin-bottom: 56px;
+}
+
+.partners-marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: max-content;
+  animation: partners-slide-left 34s linear infinite;
+}
+
+.partners-marquee-track span {
+  flex-shrink: 0;
+  padding: 0 30px;
+}
+
+.partners:hover .partners-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-slide-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Infinite logo strip */
+.partners-logo-viewport {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+.partners-logo-track {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 64px;
+  width: max-content;
+  padding: 8px 32px;
+  animation: partners-scroll-logos 28s linear infinite;
+}
+
+.partners:hover .partners-logo-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-scroll-logos {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 160px;
+}
+
+.partner-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ============================================================
+   RESPONSIVE — 1100px
+   ============================================================ */
+@media (max-width: 1100px) {
+  .vision {
+    grid-template-columns: minmax(340px, 400px) minmax(0, 1fr);
+    padding: 20px 40px 5px;
+    gap: 24px;
+  }
+
+  .world-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .world-card {
+    height: 380px;
+  }
+
+  .platform-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .platform-card {
+    min-height: auto;
+  }
+
+  .timeline {
+    margin-left: 0;
+  }
+
+  .milestone {
+    padding-right: 20px;
+  }
+
+  .milestone::before {
+    left: 60px;
+  }
+
+  .why {
+    gap: 40px;
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  .reason-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reason {
+    min-height: auto;
+    padding: 0 20px 36px;
+  }
+
+  .reason:nth-child(3),
+  .reason:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    padding-top: 32px;
+  }
+
+  /* Allow wrapping at 1100px since columns are narrower */
+  .reason h3 {
+    white-space: normal;
+  }
+
+  .partners {
+    padding-top: 13px;
+    padding-bottom: 72px;
+  }
+
+  .partners-marquee {
+    margin-bottom: 40px;
+  }
+
+  .partners-logo-track {
+    gap: 44px;
+  }
+
+  .partner-logo {
+    height: 70px;
+    width: 130px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — large desktop / ultra-wide screens (1600px+)
+   Prevents the marquee text and logos from feeling sparse or
+   over-stretched on very large monitors.
+   ============================================================ */
+@media (min-width: 1600px) {
+  .partners {
+    padding-top: 20px;
+    padding-bottom: 120px;
+  }
+
+  .partners-marquee {
+    font-size: clamp(72px, 5.2vw, 128px);
+    margin-bottom: 68px;
+  }
+
+  .partner-logo {
+    height: 104px;
+    width: 180px;
+  }
+
+  .partners-logo-track {
+    gap: 76px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 900px (tablet portrait) — Partners only
+   ============================================================ */
+@media (max-width: 900px) {
+  .partners-marquee {
+    font-size: clamp(32px, 7vw, 60px);
+    -webkit-text-stroke: 1.6px var(--blue);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 760px  (matches header.css hamburger breakpoint)
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding: 0 24px 48px;   /* top padding removed — offset now handled entirely by .hero-copy margin-top below */
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0) 58%, #000 100%);
+  }
+
+  .hero-video {
+    top: 88px;                  /* pushes video below the fixed mobile header so the logo no longer overlaps it */
+    height: clamp(200px, 56.25vw, 400px);
+    object-fit: cover;
+    object-position: center top;
+    width: 110%;
+  }
+
+  .hero-video-mask {
+    top: 88px;                              /* bounds the mask to the video's own box instead of the whole section */
+    height: clamp(200px, 56.25vw, 400px);   /* matches video height so the fade completes exactly at the video's real bottom edge */
+    bottom: auto;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.42) 72%, #000 100%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.12), transparent 35%, transparent 65%, rgba(0, 0, 0, 0.12));
+  }
+
+  .hero-copy {
+    margin-top: calc(88px + clamp(200px, 56.25vw, 400px) + 20px);  /* header height + actual video height + 20px breathing room, so text always starts right after the video ends — no gap, no overlap */
+    max-width: 100%;
+  }
+
+  .eyebrow {
+    font-size: clamp(36px, 9vw, 52px);
+  }
+
+  /* REDUCED FONT SIZE FOR MOBILE */
+  .hero-title {
+    font-size: 32px;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .hero-copy > p:not(.eyebrow) {
+    font-size: 15px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .actions .outline-button,
+  .actions .solid-button {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .scroll-cue {
+    font-size: 13px;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  /* Vision */
+  .vision {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 52px 24px 48px;
+    gap: 36px;
+  }
+
+  .vision-copy {
+    max-width: 100%;
+  }
+
+  .vision-copy h2 {
+    font-size: clamp(28px, 8vw, 42px);
+  }
+
+  .vision-copy p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .world-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .world-card {
+  min-height: 210px;
+  height: auto;
+  padding: 16px 14px 20px;
+  justify-content: flex-end;   /* pushes the pin + text block together to the bottom of the card, instead of the pin floating to the top as the first flow child */
+}
+
+.world-content {
+  margin-top: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+  /* Pin override for mobile — revert to flow so it sits above text.
+     bottom: auto clears the inherited "bottom: 165px" from the base
+     .pin rule — without this, the pin gets pushed out of the card
+     (clipped by overflow: hidden) instead of sitting in normal flow. */
+  .pin {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  transform: none;
+
+  height: 18px;
+  width: 18px;
+
+  margin-bottom: 12px;
+}
+
+  .world-card h3 {
+  height: auto;
+
+  font-size: 15px !important;
+  margin-bottom: 6px;
+
+  display: block;
+}
+
+  .world-card p {
+  font-size: 13px !important;
+  line-height: 1.35;
+
+  white-space: normal;
+}
+
+  /* ── OUR VISION LINK (mobile-only arrow fix) ──────────────────
+     Desktop .text-link is untouched. Here we only override the
+     arrow span: bump its size relative to the text and pull it
+     closer using a negative margin (cheaper than touching the
+     JSX space), plus vertical-align to fix the baseline offset
+     seen in DevTools on mobile widths.
+     ─────────────────────────────────────────────────────────── */
+  .text-link {
+    font-size: 16px;
+  }
+
+  .text-link span[aria-hidden="true"] {
+    display: inline-block;
+    font-size: 1.35em;
+    vertical-align: middle;
+    margin-left: -4px;
+  }
+
+  /* Platforms */
+  .platforms {
+    min-height: auto;
+    padding: 52px 24px 52px;
+    background: #000;
+  }
+
+  .platforms-head {
+    margin-bottom: 28px;
+    max-width: 100%;
+  }
+
+  .platforms-head h2 {
+    font-size: clamp(26px, 8vw, 40px);
+    max-width: 100%;
+  }
+
+  .platforms-head > p {
+    font-size: 15px;
+    max-width: 100%;
+    margin-top: 16px;
+  }
+
+  .platform-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .platform-card {
+    min-height: auto;
+    padding: 0 22px 24px;
+  }
+
+  .platform-image {
+    height: 250px;
+    margin: 0 -22px 22px;
+    width: calc(100% + 44px);
+  }
+
+  .platform-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 12px;
+    min-height: 0;
+  }
+
+  .platform-card p {
+    font-size: 14px !important;
+    margin-bottom: 16px;
+  }
+
+  .icon-ring {
+    height: 52px;
+    width: 52px;
+    font-size: 22px;
+    margin-bottom: 18px;
+    margin-top: 4px;
+  }
+
+  /* Journey */
+  .journey {
+    min-height: auto;
+    padding: 48px 24px 56px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.68) 0%,
+        rgba(0, 0, 0, 0.72) 100%
+      ),
+      url("../assets/OuterSpace.webp") center / cover no-repeat;
+  }
+
+  .journey-head {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 32px;
+  }
+
+  .journey-head h2 {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    gap: 0;
+    padding-left: 16px;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .milestone {
+    padding-left: 24px;
+    padding-right: 0;
+    padding-bottom: 32px;
+    position: relative;
+  }
+
+  .milestone:last-child {
+    padding-bottom: 0;
+  }
+
+  .milestone::before {
+    display: none;
+  }
+
+  .milestone::after {
+    background: #071423;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #6bbdff;
+    content: "";
+    height: 14px;
+    left: -24px;
+    position: absolute;
+    top: 8px;
+    width: 14px;
+  }
+
+  .year {
+    font-size: 20px;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .year span {
+    display: none;
+  }
+
+  .milestone h3 {
+    font-size: 17px !important;
+    margin-bottom: 8px;
+  }
+
+  .milestone p {
+    font-size: 14px !important;
+    line-height: 1.5;
+  }
+
+  /* Why */
+  .why {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    min-height: auto;
+    padding: 48px 24px 52px;
+    background: #000;
+  }
+
+  .why-copy h2 {
+    font-size: clamp(26px, 8vw, 40px);
+    max-width: 100%;
+  }
+
+  .why-copy p {
+    font-size: 15px;
+  }
+
+  .reason-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reason {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    min-height: auto;
+    padding: 24px 16px;
+  }
+
+  .reason:nth-child(even) {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .reason:nth-child(3),
+  .reason:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 24px;
+  }
+
+  .reason h3 {
+    font-size: 16px !important;
+    margin-bottom: 10px;
+    white-space: normal;
+  }
+
+  .reason p {
+    font-size: 14px !important;
+  }
+
+  .reason-icon {
+    font-size: 0;
+    height: 54px;
+    width: 54px;
+    margin-bottom: 14px;
+  }
+
+  .reason-icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Partners */
+  .partners {
+    padding-top: 10px;
+    padding-bottom: 56px;
+  }
+
+  .partners-marquee {
+    font-size: clamp(28px, 9vw, 44px);
+    -webkit-text-stroke: 1.4px var(--blue);
+    margin-bottom: 30px;
+  }
+
+  .partners-marquee-track {
+    animation-duration: 22s;
+  }
+
+  .partners-marquee-track span {
+    padding: 0 18px;
+  }
+
+  .partners-logo-track {
+    gap: 32px;
+    padding: 4px 20px;
+    animation-duration: 20s;
+  }
+
+  .partner-logo {
+    height: 54px;
+    width: 100px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 480px
+   ============================================================ */
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 18px 48px;   /* was 90px — same fix as the 760px block: offset now handled by .hero-copy margin-top */
+  }
+
+  .eyebrow {
+    font-size: clamp(32px, 10vw, 44px);
+  }
+
+  /* EVEN SMALLER FONT SIZE FOR SMALL MOBILE */
+  .hero-title {
+    font-size: 26px;
+  }
+
+  .world-card {
+    min-height: 185px;
+    height: auto;
+
+    padding: 14px 10px 16px;
+}
+
+.world-card h3 {
+    height: auto;
+    font-size: 13px !important;
+    margin-bottom: 4px;
+}
+
+.world-card p {
+    font-size: 11px !important;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+  .reason-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reason:nth-child(even) {
+    border-left: none;
+  }
+
+  .reason {
+    padding: 20px 0;
+  }
+
+  /* Partners */
+  .partners {
+    padding-top: 8px;
+    padding-bottom: 48px;
+  }
+
+  .partners-marquee {
+    font-size: clamp(22px, 9.5vw, 34px);
+    -webkit-text-stroke: 1.1px var(--blue);
+    margin-bottom: 24px;
+  }
+
+  .partners-marquee-track span {
+    padding: 0 12px;
+  }
+
+  .partners-logo-track {
+    gap: 22px;
+    padding: 4px 16px;
+  }
+
+  .partner-logo {
+    height: 44px;
+    width: 82px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 360px (very small phones, e.g. older/budget
+   devices, iPhone SE, small Android screens) — Partners only
+   ============================================================ */
+@media (max-width: 360px) {
+  .partners-marquee {
+    font-size: clamp(18px, 9vw, 26px);
+    -webkit-text-stroke: 1px var(--blue);
+  }
+
+  .partner-logo {
+    height: 38px;
+    width: 70px;
+  }
+
+  .partners-logo-track {
+    gap: 16px;
+  }
+}

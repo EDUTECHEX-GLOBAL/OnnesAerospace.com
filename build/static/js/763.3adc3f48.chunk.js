@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkonnes_home_revamp=self.webpackChunkonnes_home_revamp||[]).push([[763],{8763(e,n,s){s.r(n),s.d(n,{default:()=>t});var a=s(3399),o=s(579);const t=()=>localStorage.getItem("adminToken")?(0,o.jsx)(a.sv,{}):(0,o.jsx)(a.C5,{to:"/admin-login"})}}]);
+//# sourceMappingURL=763.3adc3f48.chunk.js.map
