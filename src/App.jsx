@@ -11,6 +11,7 @@ import WhyOnnes from "./components/WhyOnnes.jsx";
 import FinalCta from "./components/FinalCta.jsx";
 import Footer from "./components/Footer.jsx";
 import Partners from "./components/Partners.jsx";
+import api from "./api";
 
 // Lazy-load all page routes
 const VisionPage = lazy(() => import("./components/VisionPage.jsx"));
@@ -66,7 +67,23 @@ function ScrollToHash() {
   return null;
 }
 
+const VISIT_TRACK_KEY = "onnes_visit_logged";
+
 export default function App() {
+  const location = useLocation();
+
+  // Track real visitors once per browser session (skips /admin routes)
+  useEffect(() => {
+    if (location.pathname.startsWith("/admin")) return;
+    if (sessionStorage.getItem(VISIT_TRACK_KEY)) return;
+
+    sessionStorage.setItem(VISIT_TRACK_KEY, "1");
+
+    api.post("/api/admin-visitors/admin-visitor").catch((err) => {
+      console.error("Visitor tracking failed:", err.message);
+    });
+  }, [location.pathname]);
+
   return (
     <Suspense fallback={null}>
       <ScrollToHash />
