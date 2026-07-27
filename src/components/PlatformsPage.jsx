@@ -17,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
@@ -144,48 +145,57 @@ function PlatformSection({ section }) {
 
 export default function PlatformsPage() {
   return (
-    <main className="site-shell platforms-page">
-      <Header />
-      <section className="platform-page-hero" id="platforms-top">
-        <div className="platform-page-hero-bg" style={{ backgroundImage: `url(${heroBg})` }} />
-        <div className="platform-page-hero-copy">
-          <p className="platform-page-eyebrow">Our Platforms</p>
-          <h1>
-            Infrastructure
-            <br />
-            That Powers The
-            <br />
-            Future Of Space
-          </h1>
-          <span className="platform-title-rule" />
-          <p>
-            Onnes Aerospace develops and integrates advanced infrastructure platforms that enable persistent
-            operations across orbit, the Moon, and deep space.
-          </p>
-          <p>Modular. Intelligent. Autonomous. Built for the toughest environments and the longest missions.</p>
-          <a className="solid-button platform-hero-button" href="#orbital-infrastructure">
-            Explore Our Platforms <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </section>
-      {platformSections.map((section) => (
-        <PlatformSection section={section} key={section.id} />
-      ))}
-      <section className="platform-page-cta" style={{ backgroundImage: `url(${ctaBg})` }}>
-        <div>
-          <h2>Building The Infrastructure That Takes Humanity Further.</h2>
-          <p>From orbit to deep space, our platforms are built to enable the missions of today and the civilizations of tomorrow.</p>
-        </div>
-        <div className="cta-actions">
-          <Link className="solid-button" to="/contact#mission-brief">
-            Partner With Us <span aria-hidden="true">→</span>
-          </Link>
-          <a className="outline-button" href="/applications">
-            Explore Applications <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </section>
-      <Footer />
-    </main>
+    <>
+      <Helmet>
+        <title>Our Platforms | Onnes Aerospace</title>
+        <meta
+          name="description"
+          content="Infrastructure platforms powering the future of space — orbital infrastructure, lunar infrastructure, deep space systems, and autonomous space ecosystems."
+        />
+      </Helmet>
+      <main className="site-shell platforms-page">
+        <Header />
+        <section className="platform-page-hero" id="platforms-top">
+          <div className="platform-page-hero-bg" style={{ backgroundImage: `url(${heroBg})` }} />
+          <div className="platform-page-hero-copy">
+            <p className="platform-page-eyebrow">Our Platforms</p>
+            <h1>
+              Infrastructure
+              <br />
+              That Powers The
+              <br />
+              Future Of Space
+            </h1>
+            <span className="platform-title-rule" />
+            <p>
+              Onnes Aerospace develops and integrates advanced infrastructure platforms that enable persistent
+              operations across orbit, the Moon, and deep space.
+            </p>
+            <p>Modular. Intelligent. Autonomous. Built for the toughest environments and the longest missions.</p>
+            <a className="solid-button platform-hero-button" href="#orbital-infrastructure">
+              Explore Our Platforms <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+        {platformSections.map((section) => (
+          <PlatformSection section={section} key={section.id} />
+        ))}
+        <section className="platform-page-cta" style={{ backgroundImage: `url(${ctaBg})` }}>
+          <div>
+            <h2>Building The Infrastructure That Takes Humanity Further.</h2>
+            <p>From orbit to deep space, our platforms are built to enable the missions of today and the civilizations of tomorrow.</p>
+          </div>
+          <div className="cta-actions">
+            <Link className="solid-button" to="/contact#mission-brief">
+              Partner With Us <span aria-hidden="true">→</span>
+            </Link>
+            <a className="outline-button" href="/applications">
+              Explore Applications <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    </>
   );
 }

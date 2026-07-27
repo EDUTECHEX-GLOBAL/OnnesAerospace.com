@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import Header from "./components/Header.jsx";
 import "./styles/home.css";
@@ -33,17 +34,26 @@ const VisitorsList = lazy(() => import("./AdminDashboard/components/VisitorsList
 
 function HomePage() {
   return (
-    <main className="site-shell">
-      <Header />
-      <Hero />
-      <Vision />
-      <Platforms />
-      {/* <Journey /> */}
-      <WhyOnnes />
-      {/* <Partners /> */}
-      <FinalCta />
-      <Footer />
-    </main>
+    <>
+      <Helmet>
+        <title>Onnes Aerospace | Next-Generation Deep Space Infrastructure</title>
+        <meta
+          name="description"
+          content="Onnes Aerospace is engineering the infrastructure systems that enable persistent orbital operations, lunar logistics, autonomous space ecosystems, and deep-space missions."
+        />
+      </Helmet>
+      <main className="site-shell">
+        <Header />
+        <Hero />
+        <Vision />
+        <Platforms />
+        {/* <Journey /> */}
+        <WhyOnnes />
+        {/* <Partners /> */}
+        <FinalCta />
+        <Footer />
+      </main>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ import {
   Truck,
   Waves,
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 import Header from "./Header.jsx";
 import FinalCta from "./FinalCta.jsx";
@@ -116,52 +117,61 @@ function ApplicationDomain({ domain }) {
 
 export default function ApplicationsPage() {
   return (
-    <main className="site-shell applications-page">
-      <Header />
-
-      <section className="applications-hero" id="applications-top">
-        <div
-          className="applications-hero-bg"
-          style={{ backgroundImage: `url(${heroBg})` }}
+    <>
+      <Helmet>
+        <title>Our Applications | Onnes Aerospace</title>
+        <meta
+          name="description"
+          content="Infrastructure enabling every mission that matters — commercial space, national security space, dual-use systems, and deep space exploration."
         />
+      </Helmet>
+      <main className="site-shell applications-page">
+        <Header />
 
-        <div className="applications-hero-copy">
-          <p className="applications-eyebrow">Our Applications</p>
-          <h1>
-            Infrastructure
-            <br />
-            Enabling Every
-            <br />
-            Mission That Matters
-          </h1>
-          <p>
-            From commercial space to national security and space-enabled dual usage systems
-            Onnes Aerospace provides the critical infrastructure that
-            empowers the world&apos;s most ambitious missions.
-          </p>
-          <a className="outline-button" href="/contact#careers">
-            Explore Our Applications <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </section>
+        <section className="applications-hero" id="applications-top">
+          <div
+            className="applications-hero-bg"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
 
-      <section className="application-domains-section" id="applications">
-        <div className="application-domains-heading">
-          <p className="applications-eyebrow">Application Domains</p>
-          <h2>Built For Today. Engineered For Tomorrow.</h2>
-          <p>Four domains. One purpose. Limitless potential.</p>
-        </div>
+          <div className="applications-hero-copy">
+            <p className="applications-eyebrow">Our Applications</p>
+            <h1>
+              Infrastructure
+              <br />
+              Enabling Every
+              <br />
+              Mission That Matters
+            </h1>
+            <p>
+              From commercial space to national security and space-enabled dual usage systems
+              Onnes Aerospace provides the critical infrastructure that
+              empowers the world&apos;s most ambitious missions.
+            </p>
+            <a className="outline-button" href="/contact#careers">
+              Explore Our Applications <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </section>
 
-        <div className="application-domains-grid">
-          {domains.map((domain) => (
-            <ApplicationDomain domain={domain} key={domain.number} />
-          ))}
-        </div>
-      </section>
+        <section className="application-domains-section" id="applications">
+          <div className="application-domains-heading">
+            <p className="applications-eyebrow">Application Domains</p>
+            <h2>Built For Today. Engineered For Tomorrow.</h2>
+            <p>Four domains. One purpose. Limitless potential.</p>
+          </div>
 
-      <FinalCta />
+          <div className="application-domains-grid">
+            {domains.map((domain) => (
+              <ApplicationDomain domain={domain} key={domain.number} />
+            ))}
+          </div>
+        </section>
 
-      <Footer />
-    </main>
+        <FinalCta />
+
+        <Footer />
+      </main>
+    </>
   );
 }

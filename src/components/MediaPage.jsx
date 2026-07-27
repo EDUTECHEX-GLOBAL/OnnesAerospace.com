@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { ArrowUpRight, Play } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
@@ -109,139 +110,148 @@ export default function MediaPage() {
   };
 
   return (
-    <main className="site-shell media-page">
-      <Header />
+    <>
+      <Helmet>
+        <title>Media | Onnes Aerospace</title>
+        <meta
+          name="description"
+          content="Stories from the frontier of humanity's next era — news, mission updates, and perspectives from Onnes Aerospace and the industries shaping the future beyond Earth."
+        />
+      </Helmet>
+      <main className="site-shell media-page">
+        <Header />
 
-      <section className="media-hero" style={{ backgroundImage: `url(${heroBg})` }}>
-        <div className="media-hero-copy">
-          <p className="media-eyebrow">Media</p>
-          <h1>Stories From The Frontier Of Humanity's Next Era</h1>
-          <p>
-            The latest news, mission updates, expert insights, and perspectives from Onnes Aerospace and the
-            industries shaping the future beyond Earth.
-          </p>
-        </div>
-      </section>
-
-      <section className="media-tabs" id="news">
-        <nav aria-label="Media sections">
-          <a className="active" href="#news">News</a>
-          {/* <a href="#videos">Videos</a>
-          <a href="#insights">Insights</a> */}
-        </nav>
-        {/* <TextLink href="#news">View All News</TextLink> */}
-      </section>
-
-      <section className="media-news-grid">
-        <article className="media-feature-card">
-          <div className="media-card-image" style={{ backgroundImage: `url(${featuredNews})` }}>
-            <span>Featured</span>
+        <section className="media-hero" style={{ backgroundImage: `url(${heroBg})` }}>
+          <div className="media-hero-copy">
+            <p className="media-eyebrow">Media</p>
+            <h1>Stories From The Frontier Of Humanity's Next Era</h1>
+            <p>
+              The latest news, mission updates, expert insights, and perspectives from Onnes Aerospace and the
+              industries shaping the future beyond Earth.
+            </p>
           </div>
-          <div className="media-card-copy">
-            <p className="media-date">{featuredArticle.date}</p>
-            <h2>{featuredArticle.title}</h2>
-            <p>{featuredArticle.blurb}</p>
-            <TextLink href={featuredArticle.url}>Read More</TextLink>
-          </div>
-        </article>
+        </section>
 
-        <div className="media-news-list">
-          {newsItems.map(([date, title, url]) => (
-            <article className="media-list-item" key={title}>
-              <div>
-                <p className="media-date">{date}</p>
-                <h3>{title}</h3>
-                <TextLink href={url}>Read More</TextLink>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+        <section className="media-tabs" id="news">
+          <nav aria-label="Media sections">
+            <a className="active" href="#news">News</a>
+            {/* <a href="#videos">Videos</a>
+            <a href="#insights">Insights</a> */}
+          </nav>
+          {/* <TextLink href="#news">View All News</TextLink> */}
+        </section>
 
-      {/* <section className="media-video-section" id="videos">
-        <div className="media-section-head">
-          <p className="media-eyebrow">Featured Video</p>
-          <TextLink href="#videos">View All Videos</TextLink>
-        </div>
-        <div className="media-video-grid">
-          <article className="media-video-feature" style={{ backgroundImage: `url(${featuredVideo})` }}>
-            <PlayMark />
-            <div>
-              <p className="media-date">03:42 min</p>
-              <h2>The Infrastructure that Powers Humanity Beyond Earth</h2>
-              <p>A vision for the future of persistent operations across orbit, the Moon, and deep space.</p>
+        <section className="media-news-grid">
+          <article className="media-feature-card">
+            <div className="media-card-image" style={{ backgroundImage: `url(${featuredNews})` }}>
+              <span>Featured</span>
+            </div>
+            <div className="media-card-copy">
+              <p className="media-date">{featuredArticle.date}</p>
+              <h2>{featuredArticle.title}</h2>
+              <p>{featuredArticle.blurb}</p>
+              <TextLink href={featuredArticle.url}>Read More</TextLink>
             </div>
           </article>
-          <div className="media-video-list">
-            {videos.map(([time, title, body, image]) => (
-              <article className="media-video-item" key={title}>
-                <div style={{ backgroundImage: `url(${image})` }}>
-                  <PlayMark />
-                </div>
+
+          <div className="media-news-list">
+            {newsItems.map(([date, title, url]) => (
+              <article className="media-list-item" key={title}>
                 <div>
-                  <p className="media-date">{time}</p>
+                  <p className="media-date">{date}</p>
                   <h3>{title}</h3>
-                  <p>{body}</p>
+                  <TextLink href={url}>Read More</TextLink>
                 </div>
               </article>
             ))}
           </div>
-        </div>
-      </section> */}
+        </section>
 
-      {/* <section className="media-insights" id="insights">
-        <div className="media-section-head">
-          <p className="media-eyebrow">Latest Insights</p>
-          <TextLink href="#insights">View All Insights</TextLink>
-        </div>
-        <div className="media-insight-grid">
-          {insights.map(([date, title, body, image]) => (
-            <article className="media-insight-card" key={title}>
-              <div style={{ backgroundImage: `url(${image})` }} />
-              <p className="media-date">{date}</p>
-              <h3>{title}</h3>
-              <p>{body}</p>
-              <TextLink href="#insights">Read Insight</TextLink>
+        {/* <section className="media-video-section" id="videos">
+          <div className="media-section-head">
+            <p className="media-eyebrow">Featured Video</p>
+            <TextLink href="#videos">View All Videos</TextLink>
+          </div>
+          <div className="media-video-grid">
+            <article className="media-video-feature" style={{ backgroundImage: `url(${featuredVideo})` }}>
+              <PlayMark />
+              <div>
+                <p className="media-date">03:42 min</p>
+                <h2>The Infrastructure that Powers Humanity Beyond Earth</h2>
+                <p>A vision for the future of persistent operations across orbit, the Moon, and deep space.</p>
+              </div>
             </article>
-          ))}
-        </div>
-      </section> */}
+            <div className="media-video-list">
+              {videos.map(([time, title, body, image]) => (
+                <article className="media-video-item" key={title}>
+                  <div style={{ backgroundImage: `url(${image})` }}>
+                    <PlayMark />
+                  </div>
+                  <div>
+                    <p className="media-date">{time}</p>
+                    <h3>{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section> */}
 
-      <section id="subscribe" className="media-newsletter" style={{ backgroundImage: `url(${newsletterBg})` }}>
-        <div>
-          <p className="media-eyebrow">Stay Connected</p>
-          <h2>Get The Latest News And Insights</h2>
-          <p>Delivered to your inbox.</p>
-        </div>
+        {/* <section className="media-insights" id="insights">
+          <div className="media-section-head">
+            <p className="media-eyebrow">Latest Insights</p>
+            <TextLink href="#insights">View All Insights</TextLink>
+          </div>
+          <div className="media-insight-grid">
+            {insights.map(([date, title, body, image]) => (
+              <article className="media-insight-card" key={title}>
+                <div style={{ backgroundImage: `url(${image})` }} />
+                <p className="media-date">{date}</p>
+                <h3>{title}</h3>
+                <p>{body}</p>
+                <TextLink href="#insights">Read Insight</TextLink>
+              </article>
+            ))}
+          </div>
+        </section> */}
 
-        <div className="media-newsletter-right">
-          <form onSubmit={handleSubscribe} noValidate>
-            <input
-              aria-label="Email address"
-              placeholder="Enter your email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={status === "loading"}
-            />
-            <button type="submit" disabled={status === "loading"}>
-              {status === "loading" ? "Subscribing..." : "Subscribe"} <ArrowUpRight />
-            </button>
-          </form>
-          {feedback && (
-            <p
-              className={`media-newsletter-feedback ${
-                status === "success" ? "is-success" : "is-error"
-              }`}
-              role="status"
-            >
-              {feedback}
-            </p>
-          )}
-        </div>
-      </section>
+        <section id="subscribe" className="media-newsletter" style={{ backgroundImage: `url(${newsletterBg})` }}>
+          <div>
+            <p className="media-eyebrow">Stay Connected</p>
+            <h2>Get The Latest News And Insights</h2>
+            <p>Delivered to your inbox.</p>
+          </div>
 
-      <Footer />
-    </main>
+          <div className="media-newsletter-right">
+            <form onSubmit={handleSubscribe} noValidate>
+              <input
+                aria-label="Email address"
+                placeholder="Enter your email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === "loading"}
+              />
+              <button type="submit" disabled={status === "loading"}>
+                {status === "loading" ? "Subscribing..." : "Subscribe"} <ArrowUpRight />
+              </button>
+            </form>
+            {feedback && (
+              <p
+                className={`media-newsletter-feedback ${
+                  status === "success" ? "is-success" : "is-error"
+                }`}
+                role="status"
+              >
+                {feedback}
+              </p>
+            )}
+          </div>
+        </section>
+
+        <Footer />
+      </main>
+    </>
   );
 }
