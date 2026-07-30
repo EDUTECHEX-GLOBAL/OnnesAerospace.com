@@ -147,7 +147,13 @@
 .application-nav-dropdown .nav-menu,
 .applications-nav-dropdown .nav-menu { min-width: 300px; }
 .technology-nav-dropdown .nav-menu { min-width: 230px; }
-.media-nav-dropdown .nav-menu { min-width: 130px; }
+.media-nav-dropdown .nav-menu {
+  min-width: 130px;
+  padding: 6px 0;
+}
+.media-nav-dropdown .nav-menu a {
+  padding: 9px 15px;
+}
 
 .contact-page .nav-menu { min-width: 176px; }
 .contact-page .platform-nav-dropdown .nav-menu,
@@ -155,7 +161,13 @@
 .contact-page .application-nav-dropdown .nav-menu,
 .contact-page .applications-nav-dropdown .nav-menu { min-width: 300px; }
 .contact-page .technology-nav-dropdown .nav-menu { min-width: 230px; }
-.contact-page .media-nav-dropdown .nav-menu { min-width: 130px; }
+.contact-page .media-nav-dropdown .nav-menu {
+  min-width: 130px;
+  padding: 6px 0;
+}
+.contact-page .media-nav-dropdown .nav-menu a {
+  padding: 9px 15px;
+}
 
 .outline-button,
 .solid-button,

@@ -8,7 +8,7 @@ const groups = [
   ["Platforms", "Orbital Infrastructure", "Lunar Infrastructure", "Deep Space Systems", "Autonomous Space Ecosystems"],
   ["Applications", "Commercial Space", "National Security Space", "Deep Space Exploration"],
   ["Technology", "Infrastructure Platform", "Intelligent Systems", "Advanced Engineering"],
-  ["Media", "News", "Videos", "Insights"],
+  ["Media", "News",],
 ];
 
 const footerLinks = {
@@ -28,8 +28,8 @@ const footerLinks = {
   "Intelligent Systems": "/technology#intelligent-systems",
   "Advanced Engineering": "/technology#advanced-engineering",
   News: "/media#news",
-  Videos: "/media#videos",
-  Insights: "/media#insights",
+  // Videos: "/media#videos",
+  // Insights: "/media#insights",
 };
 
 const socialLinks = [

@@ -33,7 +33,7 @@ const technologyItems = [
 
 const mediaItems = [
   ["News", "/media#news"],
-  ["Insights", "/media#subscribe"],
+  // ["Insights", "/media#subscribe"],
 ];
 
 const dropdownNavs = [
