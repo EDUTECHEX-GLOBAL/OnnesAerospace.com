@@ -1,7 +1,7 @@
 import { Link, useLocation, Outlet } from "react-router-dom";
 import {
   FaEnvelope, FaUserPlus, FaUsers,
-  FaSignOutAlt, FaBars, FaBell, FaHome, FaTimes,
+  FaSignOutAlt, FaBars, FaBell, FaHome, FaTimes, FaPaperPlane,
 } from "react-icons/fa";
 import onnesWordmark from "../../assets/onnes-wordmark.png";
 import { useState, useEffect } from "react";
@@ -75,10 +75,11 @@ export default function AdminDashboard() {
 
         {/* Nav */}
         <nav style={{ flex: 1, padding: "12px 12px 0", overflowY: "auto" }}>
-          <NavItem icon={FaHome}     label="Home"       path="/admin-dashboard/admin-home"      onNavigate={() => isMobile && setSidebarOpen(false)} />
-          <NavItem icon={FaEnvelope} label="Contact Us" path="/admin-dashboard/admin-contact"   onNavigate={() => isMobile && setSidebarOpen(false)} />
-          <NavItem icon={FaUserPlus} label="Subscribe"  path="/admin-dashboard/admin-subscribe" onNavigate={() => isMobile && setSidebarOpen(false)} />
-          <NavItem icon={FaUsers}    label="Visitors"   path="/admin-dashboard/admin-visitors"  onNavigate={() => isMobile && setSidebarOpen(false)} />
+          <NavItem icon={FaHome}       label="Home"       path="/admin-dashboard/admin-home"       onNavigate={() => isMobile && setSidebarOpen(false)} />
+          <NavItem icon={FaEnvelope}   label="Contact Us" path="/admin-dashboard/admin-contact"    onNavigate={() => isMobile && setSidebarOpen(false)} />
+          <NavItem icon={FaUserPlus}   label="Subscribe"  path="/admin-dashboard/admin-subscribe"  onNavigate={() => isMobile && setSidebarOpen(false)} />
+          <NavItem icon={FaUsers}      label="Visitors"   path="/admin-dashboard/admin-visitors"   onNavigate={() => isMobile && setSidebarOpen(false)} />
+          <NavItem icon={FaPaperPlane} label="Newsletter" path="/admin-dashboard/admin-newsletter" onNavigate={() => isMobile && setSidebarOpen(false)} />
         </nav>
 
         {/* Logout */}

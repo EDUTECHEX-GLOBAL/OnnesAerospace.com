@@ -20,6 +20,8 @@ const PlatformsPage = lazy(() => import("./components/PlatformsPage.jsx"));
 const ApplicationsPage = lazy(() => import("./components/ApplicationsPage.jsx"));
 const TechnologyPage = lazy(() => import("./components/TechnologyPage.jsx"));
 const MediaPage = lazy(() => import("./components/MediaPage.jsx"));
+const BlogsPage = lazy(() => import("./components/BlogsPage.jsx"));
+const BlogPostPage = lazy(() => import("./components/BlogPostPage.jsx"));
 const ContactPage = lazy(() => import("./components/ContactPage.jsx"));
 
 // Lazy admin imports
@@ -30,6 +32,7 @@ const HomeDashboard = lazy(() => import("./AdminDashboard/components/Home"));
 const ContactList = lazy(() => import("./AdminDashboard/components/ContactList"));
 const SubscriptionList = lazy(() => import("./AdminDashboard/components/SubscriptionList"));
 const VisitorsList = lazy(() => import("./AdminDashboard/components/VisitorsList"));
+const Newsletter = lazy(() => import("./AdminDashboard/components/Newsletter"));
 
 
 function HomePage() {
@@ -104,6 +107,8 @@ export default function App() {
         <Route path="/applications" element={<ApplicationsPage />} />
         <Route path="/technology" element={<TechnologyPage />} />
         <Route path="/media" element={<MediaPage />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/blogs/:slug" element={<BlogPostPage />} />
         <Route path="/contact" element={<ContactPage />} />
 
         <Route path="/admin-login" element={<AdminLogin />} />
@@ -115,6 +120,7 @@ export default function App() {
             <Route path="admin-contact" element={<ContactList />} />
             <Route path="admin-subscribe" element={<SubscriptionList />} />
             <Route path="admin-visitors" element={<VisitorsList />} />
+            <Route path="admin-newsletter" element={<Newsletter />} />
           </Route>
         </Route>
       </Routes>
