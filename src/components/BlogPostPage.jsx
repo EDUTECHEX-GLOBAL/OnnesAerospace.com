@@ -19,6 +19,132 @@ function formatDate(dateStr) {
   });
 }
 
+// Splits plain textarea text into paragraphs the same way the email
+// template does — blank line = new paragraph, single newline = <br/>.
+function IntroSection({ introText, introImage }) {
+  const paragraphs = (introText || "")
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  if (paragraphs.length === 0 && !introImage) return null;
+
+  return (
+    <section className={`blog-post-intro${introImage ? " has-image" : ""}`}>
+      {paragraphs.length > 0 && (
+        <div className="blog-post-intro-text">
+          {paragraphs.map((p, i) => (
+            <p key={i}>
+              {p.split("\n").map((line, j, arr) => (
+                <span key={j}>
+                  {line}
+                  {j < arr.length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          ))}
+        </div>
+      )}
+      {introImage && (
+        <div className="blog-post-intro-image-wrap">
+          <img className="blog-post-intro-image" src={introImage} alt="" />
+        </div>
+      )}
+    </section>
+  );
+}
+
+function HighlightsBox({ title, highlights }) {
+  const list = Array.isArray(highlights) ? highlights.filter((h) => h && h.trim()) : [];
+  if (list.length === 0) return null;
+
+  return (
+    <div className="blog-post-highlights">
+      {title && <p className="blog-post-highlights-title">{title}</p>}
+      <ul>
+        {list.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function CtaButton({ ctaText, ctaLink }) {
+  if (!ctaText || !ctaLink) return null;
+  const isExternal = /^https?:\/\//i.test(ctaLink);
+  return (
+    <div className="blog-post-cta">
+      {isExternal ? (
+        <a href={ctaLink} target="_blank" rel="noopener noreferrer">
+          {ctaText} <span aria-hidden="true">→</span>
+        </a>
+      ) : (
+        <Link to={ctaLink}>
+          {ctaText} <span aria-hidden="true">→</span>
+        </Link>
+      )}
+    </div>
+  );
+}
+
+function AuthorNote({ authorNote }) {
+  if (!authorNote || !authorNote.trim()) return null;
+  return (
+    <div className="blog-post-author-note">
+      <p className="blog-post-author-note-label">Author's Note</p>
+      <p className="blog-post-author-note-text">
+        {authorNote.split("\n").map((line, i, arr) => (
+          <span key={i}>
+            {line}
+            {i < arr.length - 1 && <br />}
+          </span>
+        ))}
+      </p>
+    </div>
+  );
+}
+
+function Contributors({ contributors }) {
+  const list = Array.isArray(contributors) ? contributors.filter((c) => c && c.name) : [];
+  if (list.length === 0) return null;
+
+  return (
+    <div className="blog-post-contributors">
+      {list.map((c, i) => (
+        <div className="blog-post-contributor" key={i}>
+          {c.photo && <img src={c.photo} alt={c.name} />}
+          <p>{c.name}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SocialLinks({ socialLinks }) {
+  const entries = [
+    ["Website", socialLinks?.website],
+    ["Contact", socialLinks?.contact],
+    ["LinkedIn", socialLinks?.linkedin],
+    ["YouTube", socialLinks?.youtube],
+  ].filter(([, url]) => url && url.trim());
+
+  if (entries.length === 0) return null;
+
+  return (
+    <div className="blog-post-social-links">
+      {entries.map(([label, url], i) => (
+        <span key={label}>
+          {i > 0 && <span className="blog-post-social-dot">•</span>}
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {label}
+          </a>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function BlogPostPage() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
@@ -78,25 +204,45 @@ export default function BlogPostPage() {
 
         {status === "ready" && post && (
           <>
+            {post.tagline && (
+              <div className="blog-post-tagline-bar">
+                <p>{post.tagline}</p>
+              </div>
+            )}
+
             <section className="blog-post-hero">
               <div className="blog-post-hero-inner">
                 <Link className="media-link blog-post-back" to="/blogs">← Back to Blog</Link>
-                <p className="media-eyebrow">Company Update</p>
+                <p className="media-eyebrow">
+                  {post.type === "project_updates" ? "Project Update" : "Company Update"}
+                </p>
                 <h1>{post.title}</h1>
                 <p className="media-date">{formatDate(post.date)}</p>
               </div>
             </section>
 
-            {post.heroImage && (
-              <div className="blog-post-image-wrap">
-                <img className="blog-post-image" src={post.heroImage} alt="" />
-              </div>
-            )}
+            <article className="blog-post-body-wrap">
+              <IntroSection introText={post.introText} introImage={post.introImage} />
 
-            <article
-              className="blog-article-body"
-              dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
-            />
+              {post.subheading && <h2 className="blog-post-subheading">{post.subheading}</h2>}
+
+              {post.bodyHtml && post.bodyHtml.trim() && post.bodyHtml.trim() !== "<p></p>" && (
+                <div
+                  className="blog-article-body"
+                  dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
+                />
+              )}
+
+              <HighlightsBox title={post.highlightsTitle} highlights={post.highlights} />
+              <CtaButton ctaText={post.ctaText} ctaLink={post.ctaLink} />
+              <AuthorNote authorNote={post.authorNote} />
+              <Contributors contributors={post.contributors} />
+            </article>
+
+            <div className="blog-post-footer-meta">
+              <p className="blog-post-footer-brand">Onnes Aerospace</p>
+              <SocialLinks socialLinks={post.socialLinks} />
+            </div>
           </>
         )}
 

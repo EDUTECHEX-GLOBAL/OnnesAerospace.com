@@ -136,3 +136,217 @@
     padding-top: 120px;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   NEWSLETTER SECTIONS — tagline, intro, highlights, CTA,
+   author's note, contributors, social links.
+   Matches the dark theme above: same colors, var(--blue) accent,
+   var(--font-din) body font.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Tagline bar — sits just under the header, above the hero */
+/* Tagline bar — sits just under the fixed header, above the hero.
+   Needs the same top clearance as .blog-post-hero below, since it can be
+   the very first thing in the page (before the header's fixed overlay
+   otherwise hides it) when a newsletter has a tagline set. */
+.blog-post-tagline-bar {
+  background-color: #0c0c0f;
+  border-bottom: 1px solid #1c2028;
+  text-align: center;
+  padding: clamp(120px, 12vw, 168px) 20px 14px;
+}
+/* When the tagline bar IS present, it already cleared the header, so the
+   hero right after it only needs its own small breathing room — not the
+   full header-clearance padding again (which would stack and push the
+   hero down twice as far as needed). */
+.blog-post-tagline-bar + .blog-post-hero {
+  padding-top: clamp(20px, 3vw, 32px);
+}
+.blog-post-tagline-bar p {
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--blue);
+  font-family: var(--font-din);
+}
+
+.blog-post-body-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 3vw, 36px);
+}
+
+/* Intro: side-by-side text + image, stacks on mobile */
+.blog-post-intro {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin: 8px 0 8px;
+}
+.blog-post-intro.has-image .blog-post-intro-text {
+  flex: 1.4;
+}
+.blog-post-intro-image-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.blog-post-intro-image {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+.blog-post-intro-text p {
+  font-family: var(--font-din);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.75;
+  color: #c2c9d3;
+  margin: 0 0 16px;
+}
+@media (max-width: 640px) {
+  .blog-post-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .blog-post-intro-image-wrap {
+    order: -1;
+    width: 100%;
+  }
+  .blog-post-intro-image {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+.blog-post-subheading {
+  color: #fff;
+  font-family: var(--font-din);
+  font-size: clamp(19px, 1.9vw, 25px);
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 30px 0 16px;
+}
+
+/* Highlights callout box */
+.blog-post-highlights {
+  background-color: #0c0c0f;
+  border: 1px solid #1c2028;
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 28px 0;
+}
+.blog-post-highlights-title {
+  color: #fff;
+  font-family: var(--font-din);
+  font-size: 15.5px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.blog-post-highlights ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.blog-post-highlights li {
+  color: #c2c9d3;
+  font-family: var(--font-din);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.blog-post-highlights li::marker {
+  color: var(--blue);
+}
+
+/* CTA link */
+.blog-post-cta {
+  text-align: center;
+  margin: 36px 0 12px;
+}
+.blog-post-cta a {
+  color: var(--blue);
+  font-family: var(--font-din);
+  font-size: 15.5px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Author's note */
+.blog-post-author-note {
+  border-top: 1px solid #1c2028;
+  padding-top: 24px;
+  margin-top: 32px;
+}
+.blog-post-author-note-label {
+  color: #fff;
+  font-family: var(--font-din);
+  font-size: 13.5px;
+  font-weight: 700;
+  font-style: italic;
+  margin: 0 0 10px;
+}
+.blog-post-author-note-text {
+  color: #aeb8c4;
+  font-family: var(--font-din);
+  font-size: 15px;
+  line-height: 1.75;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Contributors row */
+.blog-post-contributors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin: 32px 0 8px;
+}
+.blog-post-contributor {
+  text-align: center;
+}
+.blog-post-contributor img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px;
+}
+.blog-post-contributor p {
+  color: #fff;
+  font-family: var(--font-din);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Footer meta — brand + social links, before the site Footer component */
+.blog-post-footer-meta {
+  text-align: center;
+  padding: 32px 20px 48px;
+  border-top: 1px solid #1c2028;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.blog-post-footer-brand {
+  color: #fff;
+  font-family: var(--font-din);
+  font-size: 13.5px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.blog-post-social-links a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: var(--font-din);
+}
+.blog-post-social-dot {
+  color: #4a5261;
+  padding: 0 8px;
+}
