@@ -20,7 +20,11 @@ const PlatformsPage = lazy(() => import("./components/PlatformsPage.jsx"));
 const ApplicationsPage = lazy(() => import("./components/ApplicationsPage.jsx"));
 const TechnologyPage = lazy(() => import("./components/TechnologyPage.jsx"));
 const MediaPage = lazy(() => import("./components/MediaPage.jsx"));
-const BlogsPage = lazy(() => import("./components/BlogsPage.jsx"));
+// BlogsPage (the public /blogs LISTING page) is deliberately no longer
+// routed — each newsletter now gets its own unique, unlisted link shared
+// only via email, so there's no browsable public blog index anymore.
+// BlogPostPage (a single /blogs/:slug article) is unaffected and still
+// works exactly as before — that's what the emailed links actually use.
 const BlogPostPage = lazy(() => import("./components/BlogPostPage.jsx"));
 const ContactPage = lazy(() => import("./components/ContactPage.jsx"));
 
@@ -107,7 +111,6 @@ export default function App() {
         <Route path="/applications" element={<ApplicationsPage />} />
         <Route path="/technology" element={<TechnologyPage />} />
         <Route path="/media" element={<MediaPage />} />
-        <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/blogs/:slug" element={<BlogPostPage />} />
         <Route path="/contact" element={<ContactPage />} />
 

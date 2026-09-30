@@ -31,9 +31,12 @@ const technologyItems = [
   ["Advanced Engineering", "/technology#advanced-engineering"],
 ];
 
+// "Blogs" removed — each newsletter now gets its own unique, unlisted
+// link shared only via email, so there's no browsable blog index to
+// link to from navigation anymore. The underlying /blogs/:slug route
+// still works for anyone with a direct link (see App.jsx).
 const mediaItems = [
   ["News", "/media#news"],
-  ["Blogs", "/blogs"],
   // ["Insights", "/media#subscribe"],
 ];
 
@@ -59,9 +62,9 @@ export default function Header() {
     platforms: location.pathname === "/platforms",
     applications: location.pathname === "/applications",
     technology: location.pathname === "/technology",
-    // Also highlight "Media" when on the Blogs page, since Blogs lives
-    // under the Media dropdown even though it's its own route.
-    media: location.pathname === "/media" || location.pathname === "/blogs",
+    // "Media" no longer needs to also match /blogs here, since Blogs is
+    // no longer part of the Media dropdown / nav at all.
+    media: location.pathname === "/media",
   };
 
   const closeDropdown = (name) => {

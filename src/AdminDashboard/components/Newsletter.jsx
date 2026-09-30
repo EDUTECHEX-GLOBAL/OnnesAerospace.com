@@ -155,6 +155,14 @@ function buildSocialLinksHtmlPreview(socialLinks = {}) {
 
 // Mirrors Backend/Admin/utils/newsletterTemplate.js — used only for the
 // live preview in the compose tab.
+//
+// This now mirrors the ACTUAL SENT EMAIL, not the stored/article version:
+// "Additional Content" (bodyHtml) is never rendered inside the email — it
+// only lives on that newsletter's article page, created once you send. So
+// instead of embedding the rich-text body here, this preview shows a note
+// explaining that, plus a CTA if you've typed one — the real "Read the
+// Full Article/Update" button is only known once the article page's link
+// exists, i.e. after sending.
 function buildPreviewHTML({
   subject, type, headline, tagline, introText, introImage, subheading,
   bodyHtml, highlightsTitle, highlights, ctaText, ctaLink, authorNote,
@@ -166,7 +174,7 @@ function buildPreviewHTML({
     ? (introText || "").trim()
       ? ""
       : `<p style="margin:0 0 18px 0;font-size:15px;line-height:1.7;color:#c2c9d3;font-family:'Segoe UI',Arial,sans-serif;">Your message will appear here…</p>`
-    : `<div class="nl-content">${bodyHtml}</div>`;
+    : `<p style="margin:0 0 18px 0;padding:12px 14px;border-radius:6px;background-color:#f7fafc;font-size:13px;line-height:1.6;color:#64748b;font-family:'Segoe UI',Arial,sans-serif;">Your "Additional Content" below won't appear in the email itself — it will be published to this newsletter's own article page, linked from the button below (added automatically once you send, if you haven't set a custom button above).</p>`;
 
   const taglineHtml = tagline && tagline.trim()
     ? `<tr><td align="center" style="padding:14px 24px;background-color:#f7fafc;border-bottom:1px solid #eef0f3;"><p style="margin:0;font-size:12.5px;font-style:italic;font-weight:600;color:#00B5F9;font-family:'Segoe UI',Arial,sans-serif;">${escapeHTML(tagline)}</p></td></tr>`
@@ -408,7 +416,7 @@ function ComposeTab({ counts, onSent }) {
       }),
       LinkExtension.configure({ openOnClick: false, autolink: true }),
       Placeholder.configure({
-        placeholder: "Optional — more paragraphs, images, or lists below the intro.",
+        placeholder: "Optional — the full article body. Shown on this newsletter's article page, not in the email itself.",
       }),
     ],
     content: "",
@@ -554,6 +562,8 @@ function ComposeTab({ counts, onSent }) {
           />
         </div>
 
+        {/* Keep "30 days" here in sync with PROJECT_UPDATE_LINK_EXPIRY_DAYS
+            in Backend/Admin/routes/newsletterRoutes.js. */}
         <div style={{
           display: "flex", alignItems: "flex-start", gap: 8,
           background: type === "generic" ? "#eff6ff" : "#f8fafc",
@@ -563,7 +573,7 @@ function ComposeTab({ counts, onSent }) {
         }}>
           {type === "generic"
             ? "This will also publish a public article at onnesaerospace.com/blogs — the \"Read More\" button defaults to that page unless you set a custom link below."
-            : "Project Updates stay private. No public article page is created, and no default \"Read More\" link is added."}
+            : "This stays off the public site and out of search engines. If you add \"Additional Content\" below, it still gets its own private article page — link-only, expiring after 30 days — that the email's \"Read the Full Update\" button points to automatically."}
         </div>
 
         <label style={labelStyle}>Email Subject Line</label>
@@ -634,7 +644,7 @@ function ComposeTab({ counts, onSent }) {
         <SectionDivider label="Additional Content" />
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-          <label style={{ ...labelStyle, marginBottom: 0, marginTop: 0 }}>Message (optional)</label>
+          <label style={{ ...labelStyle, marginBottom: 0, marginTop: 0 }}>Additional Content — Full Article Body (optional)</label>
           <button
             onClick={() => setShowPreview((p) => !p)}
             style={{
@@ -1356,7 +1366,7 @@ function HistoryTab() {
                       <td style={{ ...tdStyle, textAlign: "right", whiteSpace: "nowrap" }}>
                         <div style={{ display: "inline-flex", gap: 6 }}>
                           {h.slug && (
-                              <a
+                            <a
                               href={`${window.location.origin}/blogs/${h.slug}`}
                               target="_blank"
                               rel="noopener noreferrer"
