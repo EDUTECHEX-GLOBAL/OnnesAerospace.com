@@ -41,22 +41,26 @@
   margin: 0 0 24px;
 }
 
-.legal-text,
-.legal-lines {
+/* Selectors are deliberately specific (.legal-page .legal-section ...) so they
+   beat any global `p { max-width }` rule in home.css and the text runs the
+   full width of the page, like the reference. */
+.legal-page .legal-section .legal-text,
+.legal-page .legal-section .legal-lines {
   color: #d6d9e2;
   font-size: 16px;
   line-height: 1.7;
   margin: 0 0 20px;
-  max-width: 960px;
+  max-width: none;
+  width: 100%;
 }
 
-.legal-text:last-child,
-.legal-lines:last-child {
+.legal-page .legal-section .legal-text:last-child,
+.legal-page .legal-section .legal-lines:last-child {
   margin-bottom: 0;
 }
 
 /* Restrictions: plain lines, no bullets (as in the reference) */
-.legal-lines {
+.legal-page .legal-section .legal-lines {
   list-style: none;
   padding: 0;
 }
@@ -86,8 +90,8 @@
     margin-top: 40px;
   }
 
-  .legal-text,
-  .legal-lines {
+  .legal-page .legal-section .legal-text,
+  .legal-page .legal-section .legal-lines {
     font-size: 15px;
   }
 }
