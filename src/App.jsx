@@ -27,6 +27,8 @@ const MediaPage = lazy(() => import("./components/MediaPage.jsx"));
 // works exactly as before — that's what the emailed links actually use.
 const BlogPostPage = lazy(() => import("./components/BlogPostPage.jsx"));
 const ContactPage = lazy(() => import("./components/ContactPage.jsx"));
+const PrivacyPolicyPage = lazy(() => import("./components/PrivacyPolicyPage.jsx"));
+const TermsOfUsePage = lazy(() => import("./components/TermsOfUsePage.jsx"));
 
 // Lazy admin imports
 const AdminLogin = lazy(() => import("./AdminDashboard/pages/AdminLogin"));
@@ -113,6 +115,8 @@ export default function App() {
         <Route path="/media" element={<MediaPage />} />
         <Route path="/blogs/:slug" element={<BlogPostPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-use" element={<TermsOfUsePage />} />
 
         <Route path="/admin-login" element={<AdminLogin />} />
 

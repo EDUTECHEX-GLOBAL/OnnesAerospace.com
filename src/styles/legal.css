@@ -1,0 +1,100 @@
+/* ============================================================
+   LEGAL PAGES — legal.css  (Privacy Policy, Terms & Conditions)
+   Uses the site's own tokens (--text, --line) and D-DIN font
+   (inherited from base.css). Only weights 400 / 700 are used.
+   Side padding matches footer.css so text lines up with the footer.
+   ============================================================ */
+
+/* Same header scrim the Vision page uses, so the white nav stays legible.
+   :not(.mobile-menu-open) keeps it from overriding the open mobile menu. */
+.legal-page .header:not(.mobile-menu-open) {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.42) 72%, transparent 100%);
+}
+
+.legal-content {
+  /* top padding clears the absolutely-positioned header */
+  padding: 160px 64px 110px;
+}
+
+.legal-title {
+  font-size: clamp(28px, 2.8vw, 40px);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.legal-rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 48px 0 56px;
+}
+
+.legal-section + .legal-section {
+  margin-top: 56px;
+}
+
+.legal-heading {
+  color: #fff;
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 24px;
+}
+
+.legal-text,
+.legal-lines {
+  color: #d6d9e2;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 20px;
+  max-width: 960px;
+}
+
+.legal-text:last-child,
+.legal-lines:last-child {
+  margin-bottom: 0;
+}
+
+/* Restrictions: plain lines, no bullets (as in the reference) */
+.legal-lines {
+  list-style: none;
+  padding: 0;
+}
+
+.legal-lines li + li {
+  margin-top: 4px;
+}
+
+/* ── RESPONSIVE (same breakpoints as footer.css / header.css) ── */
+@media (max-width: 1100px) {
+  .legal-content {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (max-width: 760px) {
+  .legal-content {
+    padding: 128px 24px 72px;
+  }
+
+  .legal-rule {
+    margin: 32px 0 40px;
+  }
+
+  .legal-section + .legal-section {
+    margin-top: 40px;
+  }
+
+  .legal-text,
+  .legal-lines {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

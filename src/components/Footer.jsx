@@ -1,4 +1,5 @@
-import { FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import onnesWordmark from "../assets/onnes-wordmark.png";
 import "../styles/footer.css";
@@ -64,8 +65,8 @@ export default function Footer() {
       ))}
       <div className="legal">
         <span>© 2026 Onnes Aerospace. All rights reserved.</span>
-        <span>Privacy Policy</span>
-        <span>Terms of Use</span>
+        <Link to="/privacy-policy">Privacy Policy</Link>
+        <Link to="/terms-of-use">Terms of Use</Link>
       </div>
     </footer>
   );
